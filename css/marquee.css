@@ -1,0 +1,109 @@
+:root {
+  --marquee-width: 100vw;
+  --marquee-height: 20vh;
+  /* --marquee-elements: 10;  defined with JavaScript */
+  --marquee-elements-displayed: 6;
+  --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed));
+}
+
+.marquee {
+  font-family: 'Raleway', sans-serif;
+  width: var(--marquee-width);
+  height: var(--marquee-height);
+  background-color: #FAFAFA;
+  color: #000;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.marquee:before, .marquee:after {
+  position: absolute;
+  top: 0;
+  width: 15rem;
+  height: 100%;
+  content: "";
+  z-index: 1;
+}
+
+.marquee:before {
+  left: 0;
+  background: linear-gradient(to right, #FFF 0%, transparent 100%);
+}
+
+.marquee:after {
+  right: 0;
+  background: linear-gradient(to left, #FFF 0%, transparent 100%);
+}
+
+.marquee-content {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  animation: scrolling 32s linear infinite;
+  animation-fill-mode: both;
+  transition: animation-play-state 250ms ease-in-out;
+}
+
+/*.marquee-content:hover {*/
+/*    animation-play-state: paused;*/
+/*  }*/
+
+.marquee-content li:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    color: red;
+    cursor: pointer;
+}
+
+.marquee-content li{
+  display: flex;
+  flex-direction: column;
+  font-size: 17px !important;
+  width: fit-content;
+  max-width: fit-content;
+  margin: 0 100px;
+  text-align: center;
+}
+
+@keyframes scrolling {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-1 * var(--marquee-element-width) * var(--marquee-elements))); }
+}
+
+.marquee-content li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-shrink: 0;
+  width: var(--marquee-element-width);
+  max-height: 100%;
+  white-space: nowrap;
+  opacity: 0.5;
+  transition: all 150ms ease-in-out;
+}
+
+/* Mobile */
+@media screen and (max-width: 991px) {
+  
+  :root {
+  --marquee-width: 100vw;
+  --marquee-height: 14vh;
+  /* --marquee-elements: 10;  defined with JavaScript */
+  --marquee-elements-displayed: 3;
+  --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed));
+  /*--marquee-animation-duration: calc(var(--marquee-elements-displayed) * 12s);*/
+}
+
+  .marquee:before, .marquee:after { width: 5rem; }
+  
+  .marquee-content li{
+    display: flex;
+    flex-direction: column;
+    font-size: 12px !important;
+    opacity: 1;
+    color: red;
+  }
+}
