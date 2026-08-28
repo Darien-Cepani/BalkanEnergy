@@ -2,6 +2,7 @@
     "name": "vendor/my-php-app",
     "description": "Balkan Energy",
     "type": "project",
+    "license": "proprietary",
     "require": {
         "php": "^8.1"
     },
