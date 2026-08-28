@@ -16,13 +16,13 @@
                 <ul class="navbar-nav ml-auto">
                     
                     <li class="nav-item">
-                        <a class="nav-link contactNavLink" href="index.php">Home</a>
+                        <a class="nav-link contactNavLink" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link contactNavLink" href="about.php">Who we are</a>
+                        <a class="nav-link contactNavLink" href="about.html">Who we are</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link contactNavLink" href="index.php#services">Services</a>
+                        <a class="nav-link contactNavLink" href="index.html#services">Services</a>
                     </li>
                     <!--<li class="nav-item dropdown">-->
                     <!--        <a class="nav-link dropdown-toggle contactNavLink" data-toggle="dropdown" href="#" role="button"aria-haspopup="true" aria-expanded="false">Transport</a>-->
@@ -32,10 +32,10 @@
                     <!--        </div>-->
                     <!--</li>-->
                     <li class="nav-item">
-                        <a class="nav-link contactNavLink" href="values.php">Blog</a>
+                        <a class="nav-link contactNavLink" href="values.html">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link contactNavLink active" href="#">Contact Us</a>
+                        <a class="nav-link contactNavLink active" href="index.html#contact">Contact Us</a>
                     </li>
                 </ul>
             </div>
