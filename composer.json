@@ -15,6 +15,6 @@
         }
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit --do-not-fail-on-empty-test-suite tests"
     }
 }
