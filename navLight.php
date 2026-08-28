@@ -35,7 +35,7 @@
                         <a class="nav-link contactNavLink" href="values.html">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link contactNavLink active" href="index.html#contact">Contact Us</a>
+                        <a class="nav-link contactNavLink active" href="contact.html">Contact Us</a>
                     </li>
                 </ul>
             </div>
