@@ -2,7 +2,7 @@ name: Deploy PHP Frontend to Pages
 
 on:
   push:
-    branches: ["main"] # Change to your default branch name if different
+    branches: ["main"] # Change this to "master" if your default branch is master
 
 permissions:
   contents: read
@@ -23,19 +23,34 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2' # Match your local PHP version
+          php-version: '8.2' # Matches your local environment version
 
       - name: Create distribution folder
         run: mkdir -p dist
 
-      - name: Generate static HTML from PHP
-        # Replace this line with your specific build scripts or framework commands
-        run: php index.php > dist/index.html 
+      - name: Convert ALL PHP pages to HTML and copy assets
+        run: |
+          # 1. Loop through all PHP files in the root folder and convert them
+          for file in *.php; do
+            # Ensure the file exists to prevent errors in empty directories
+            [ -e "$file" ] || continue
+            
+            # Extract the filename without extension (e.g., 'about' from 'about.php')
+            filename="${file%.php}"
+            
+            # Compile PHP file to HTML into the dist directory
+            php "$file" > "dist/${filename}.html"
+            echo "Successfully compiled: $file -> dist/${filename}.html"
+          done
+
+          # 2. Copy all asset folders (css, js, images, assets, etc.)
+          # This copies your directory structure while ignoring raw backend scripts
+          rsync -av --exclude='*.php' --exclude='.github' --exclude='.git*' ./ dist/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Points to the folder containing your generated HTML files
+          path: './dist' # Points to the compiled folder containing all pages and assets
 
   deploy:
     environment:
